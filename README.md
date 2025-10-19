@@ -1,11 +1,8 @@
-# Godot-3D-Learner-Template
-Some template of Godot 3D for beginners
-
-## 1. Simple Pick-up and Place System
-### Environment requirements
+# Simple Pick-up and Place System
+## Environment requirements
 - **Godot version:** v4.5.1.stable.official
 
-### Features
+## Features
 - **Object Outline Highlighting**: When the player looks at an object in the scene, its outline will be displayed.
 - **Object Pickup and Place**: Players can pick up objects from the scene and place them anywhere.
 - **Blueprint Placement Validation**: After picking up an object, a blueprint determines if the object can be placed. A green highlight indicates a valid placement, while a red highlight indicates an invalid placement.
@@ -15,5 +12,6 @@ Some template of Godot 3D for beginners
 - **Basic Player Movement**: The player can move using basic keyboard inputs.
 - **Pause and Resume Functionality**: The game features basic pause and resume capabilities.
 
-### Others
+## Others
 - **AI Usage**: This project uses AI to generate some code.
+- **Copyright Statement**: Some of the models and textures used are from the Internet
