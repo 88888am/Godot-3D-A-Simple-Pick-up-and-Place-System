@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmeer4x2yl88x"]
+
+[ext_resource type="Script" uid="uid://cf3bge1yb0p8r" path="res://scr/player.gd" id="1_4flbx"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_sh265"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4flbx"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4flbx"]
+
+[node name="player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_4flbx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_sh265")
+
+[node name="body" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_4flbx")
+
+[node name="foot" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.50156057, 0)
+shape = SubResource("SphereShape3D_4flbx")
+
+[node name="head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7639663, 0)
+
+[node name="Camera3D" type="Camera3D" parent="head"]
+
+[node name="lookat" type="RayCast3D" parent="head/Camera3D"]
+target_position = Vector3(0, 0, -4)
+collide_with_areas = true
+
+[node name="Placer" type="Marker3D" parent="head/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4739387, -2.300301)
