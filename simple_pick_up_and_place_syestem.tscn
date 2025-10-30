@@ -1,0 +1,309 @@
+[gd_scene load_steps=35 format=3 uid="uid://cnvn2ivxpftdh"]
+
+[ext_resource type="PackedScene" uid="uid://dmeer4x2yl88x" path="res://player.tscn" id="1_tntbd"]
+[ext_resource type="Texture2D" uid="uid://b6nx1mlgotfwm" path="res://assest/texture_3.png" id="3_bil34"]
+[ext_resource type="Script" uid="uid://b4653st2i6ro7" path="res://item_1.gd" id="3_jp5lf"]
+[ext_resource type="Script" uid="uid://l0bujj6j3i5j" path="res://item_2.gd" id="4_bil34"]
+[ext_resource type="Script" uid="uid://dg4jovh5ix1sc" path="res://scr/pause.gd" id="5_5amom"]
+[ext_resource type="Script" uid="uid://cx3mytspnedla" path="res://scr/quit.gd" id="7_o3n6t"]
+[ext_resource type="Script" uid="uid://bvmui7w3pv8g2" path="res://scr/outline_control.gd" id="8_j48j4"]
+[ext_resource type="Texture2D" uid="uid://dkjpwsg2g5viq" path="res://assest/texture_1.png" id="9_5amom"]
+[ext_resource type="Shader" uid="uid://dwofo78h3dm3x" path="res://scr/outline.gdshader" id="9_jp5lf"]
+[ext_resource type="Texture2D" uid="uid://byfdolokj6msg" path="res://assest/citrus_orchard_road_puresky_4k.hdr" id="9_tjrpd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q2kne"]
+albedo_texture = ExtResource("3_bil34")
+uv1_triplanar = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bil34"]
+lightmap_size_hint = Vector2i(17, 19)
+material = SubResource("StandardMaterial3D_q2kne")
+height = 1.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mioa3"]
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x4sta"]
+albedo_texture = ExtResource("3_bil34")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_mioa3"]
+material = SubResource("StandardMaterial3D_x4sta")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jp5lf"]
+points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="SystemFont" id="SystemFont_mioa3"]
+font_names = PackedStringArray("Apotek")
+subpixel_positioning = 0
+
+[sub_resource type="SystemFont" id="SystemFont_jp5lf"]
+font_names = PackedStringArray("Apotek")
+subpixel_positioning = 0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_db48e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o3n6t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j48j4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tjrpd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fq3yi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_adtfk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fte3j"]
+shader = ExtResource("9_jp5lf")
+shader_parameter/width = 3.0000001425
+shader_parameter/color = Color(0, 0.83733344, 0.07483681, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8c0ls"]
+albedo_color = Color(0.7111414, 0.746089, 0.8654132, 1)
+albedo_texture = ExtResource("9_5amom")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_hhpg1"]
+material = SubResource("StandardMaterial3D_8c0ls")
+size = Vector3(20, 3, 20)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0fjbl"]
+points = PackedVector3Array(-10, -1.5, -10, -10, 1.5, -10, 10, -1.5, -10, -10, -1.5, 10, -10, 1.5, 10, 10, 1.5, -10, 10, -1.5, 10, 10, 1.5, 10)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_fq3yi"]
+panorama = ExtResource("9_tjrpd")
+energy_multiplier = 0.5
+
+[sub_resource type="Sky" id="Sky_adtfk"]
+sky_material = SubResource("PanoramaSkyMaterial_fq3yi")
+
+[sub_resource type="Environment" id="Environment_fte3j"]
+background_mode = 2
+sky = SubResource("Sky_adtfk")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mioa3"]
+albedo_color = Color(0.7524396, 0.77673113, 0.9381177, 1)
+albedo_texture = ExtResource("9_5amom")
+uv1_triplanar = true
+
+[sub_resource type="PrismMesh" id="PrismMesh_jp5lf"]
+material = SubResource("StandardMaterial3D_mioa3")
+left_to_right = 0.0
+size = Vector3(6, 2, 5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bil34"]
+points = PackedVector3Array(-3, -1, -2.5, -3, 1, -2.5, 3, -1, -2.5, -3, -1, 2.5, -3, 1, 2.5, 3, -1, 2.5)
+
+[node name="Simple Pick-up and Place Syestem" type="Node3D"]
+
+[node name="player" parent="." node_paths=PackedStringArray("outlineCam") instance=ExtResource("1_tntbd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1796327, 2.8845458, 3.6648679)
+ObjNameUI = NodePath("../2Dlayers/AimPoint")
+outlineCam = NodePath("../2Dlayers/OutlinerControl/OutlineContainer/SubViewport/OutlineCam")
+
+[node name="Item1" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3450187, 2.307108, -4.2642164)
+continuous_cd = true
+script = ExtResource("3_jp5lf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Item1"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_bil34")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Item1"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0.0014648438)
+shape = SubResource("CylinderShape3D_mioa3")
+
+[node name="Item2" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2892337, 2.4201622, -2.251695)
+continuous_cd = true
+script = ExtResource("4_bil34")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Item2"]
+mesh = SubResource("BoxMesh_mioa3")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Item2"]
+shape = SubResource("ConvexPolygonShape3D_jp5lf")
+
+[node name="2Dlayers" type="CanvasLayer" parent="."]
+
+[node name="AimPoint" type="Control" parent="2Dlayers"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="2Dlayers/AimPoint"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -6.0
+offset_right = 2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(4.5, 4.5)
+metadata/_edit_use_anchors_ = true
+
+[node name="ObjName" type="Label" parent="2Dlayers/AimPoint"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -126.0
+offset_top = 17.0
+offset_right = 127.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(83, 23)
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="pause" type="Control" parent="2Dlayers"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = 8.0
+offset_bottom = 16.0
+script = ExtResource("5_5amom")
+
+[node name="PauseUI" type="SubViewportContainer" parent="2Dlayers/pause"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+stretch = true
+
+[node name="PauseUI" type="SubViewport" parent="2Dlayers/pause/PauseUI"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="MenuBar" type="Control" parent="2Dlayers/pause/PauseUI/PauseUI"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -312.0
+offset_right = 544.0
+grow_vertical = 0
+
+[node name="GamePause" type="Label" parent="2Dlayers/pause/PauseUI/PauseUI/MenuBar"]
+layout_mode = 0
+offset_left = 43.0
+offset_right = 456.0
+offset_bottom = 88.0
+theme_override_fonts/font = SubResource("SystemFont_mioa3")
+theme_override_font_sizes/font_size = 73
+text = "GAME PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RESUME" type="Button" parent="2Dlayers/pause/PauseUI/PauseUI/MenuBar"]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 84.0
+offset_right = 342.0
+offset_bottom = 163.0
+size_flags_horizontal = 4
+focus_mode = 1
+theme_override_fonts/font = SubResource("SystemFont_jp5lf")
+theme_override_font_sizes/font_size = 65
+theme_override_styles/normal = SubResource("StyleBoxEmpty_db48e")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_o3n6t")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_j48j4")
+text = "RESUME"
+alignment = 0
+
+[node name="QUIT" type="Button" parent="2Dlayers/pause/PauseUI/PauseUI/MenuBar"]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 160.0
+offset_right = 227.0
+offset_bottom = 239.0
+focus_mode = 1
+theme_override_fonts/font = SubResource("SystemFont_jp5lf")
+theme_override_font_sizes/font_size = 65
+theme_override_styles/normal = SubResource("StyleBoxEmpty_tjrpd")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_fq3yi")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_adtfk")
+text = "QUIT"
+alignment = 0
+script = ExtResource("7_o3n6t")
+
+[node name="OutlinerControl" type="Control" parent="2Dlayers"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("8_j48j4")
+metadata/_edit_lock_ = true
+
+[node name="OutlineContainer" type="SubViewportContainer" parent="2Dlayers/OutlinerControl"]
+material = SubResource("ShaderMaterial_fte3j")
+layout_mode = 0
+offset_right = 1080.0
+offset_bottom = 720.0
+mouse_filter = 2
+metadata/_edit_lock_ = true
+
+[node name="SubViewport" type="SubViewport" parent="2Dlayers/OutlinerControl/OutlineContainer"]
+transparent_bg = true
+handle_input_locally = false
+debug_draw = 1
+size = Vector2i(1080, 720)
+render_target_update_mode = 4
+
+[node name="OutlineCam" type="Camera3D" parent="2Dlayers/OutlinerControl/OutlineContainer/SubViewport"]
+cull_mask = 524288
+
+[node name="Ground" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3450187, 0, -1.1754851)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_hhpg1")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_0fjbl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.76929927, 0.38862985, -0.5070952, -0.12347055, 0.869188, 0.4788186, 0.6268443, -0.30574346, 0.71665, -1.3450187, 6.073222, -1.1754851)
+light_energy = 0.505
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fte3j")
+
+[node name="Ramp" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.541078, 2.3889863, -5.870206)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ramp"]
+mesh = SubResource("PrismMesh_jp5lf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ramp/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ramp/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_bil34")
+
+[connection signal="pressed" from="2Dlayers/pause/PauseUI/PauseUI/MenuBar/RESUME" to="2Dlayers/pause" method="_on_resume_pressed"]
+[connection signal="pressed" from="2Dlayers/pause/PauseUI/PauseUI/MenuBar/QUIT" to="2Dlayers/pause" method="_on_quit_pressed"]
+[connection signal="pressed" from="2Dlayers/pause/PauseUI/PauseUI/MenuBar/QUIT" to="2Dlayers/pause/PauseUI/PauseUI/MenuBar/QUIT" method="_on_pressed"]
